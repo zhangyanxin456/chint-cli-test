@@ -1,0 +1,29 @@
+{
+  "name": "@chint-cli-test/core",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "zhangyanxin456 <zhangyx26454@yunrong.cn>",
+  "homepage": "https://github.com/zhangyanxin456/chint-cli-test/tree/main/core/cli#readme",
+  "license": "ISC",
+  "main": "",
+  "bin": {
+    "chint-cli-test": "bin/index.js"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangyanxin456/chint-cli-test.git"
+  },
+  "scripts": {
+    "test": "node ./__tests__/cli.test.js"
+  },
+  "bugs": {
+    "url": "https://github.com/zhangyanxin456/chint-cli-test/issues"
+  }
+}
