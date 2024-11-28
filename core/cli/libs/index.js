@@ -3,6 +3,6 @@
 module.exports = cli;
 
 function cli() {
-  console.log('Hello from cli');
+  console.log('12');
   return 'Hello from cli';
 }
