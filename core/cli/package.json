@@ -7,7 +7,7 @@
   "license": "ISC",
   "main": "",
   "bin": {
-    "chint-cli": "bin/index.js"
+    "chint-cli-test": "bin/index.js"
   },
   "directories": {
     "lib": "lib",
