@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/zhangyanxin456/chint-cli-test#readme",
   "dependencies": {
-    "@chint-cli-test/exec": "^1.0.6",
+    "@chint-cli-test/exec": "^1.0.8",
     "@chint-cli-test/get-npm-info": "^1.0.1",
     "@chint-cli-test/log": "^1.0.3",
     "@chint-cli-test/package": "^1.0.8",
