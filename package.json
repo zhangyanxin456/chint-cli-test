@@ -20,6 +20,7 @@
     "@chint-cli-test/exec": "^1.0.6",
     "@chint-cli-test/get-npm-info": "^1.0.1",
     "@chint-cli-test/log": "^1.0.3",
+    "@chint-cli-test/package": "^1.0.8",
     "axios": "^1.7.8",
     "colors": "^1.4.0",
     "commander": "^12.1.0",
