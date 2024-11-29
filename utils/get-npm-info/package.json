@@ -1,0 +1,26 @@
+{
+  "name": "@chint-cli-test/get-npm-info",
+  "version": "1.0.3",
+  "description": "> TODO: description",
+  "author": "zhangyanxin456 <zhangyx26454@yunrong.cn>",
+  "homepage": "https://github.com/zhangyanxin456/chint-cli-test/tree/main/utils/get-npm-info#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangyanxin456/chint-cli-test.git"
+  },
+  "scripts": {
+    "test": "node ./__tests__/get-npm-info.test.js"
+  },
+  "bugs": {
+    "url": "https://github.com/zhangyanxin456/chint-cli-test/issues"
+  }
+}

@@ -15,10 +15,17 @@ const pkg = require('../package.json');
 
 const program = new commander.Command();
 
+const {
+  LOWEST_NODE_VERSION,
+  DEFAULT_CLI_HOME,
+  NPM_NAME,
+  DEPENDENCIES_PATH,
+} = require('../libs/const');
+
 async function core() {
   try {
     await prepare();
-    // registerCommand();
+    registerCommand();
   } catch (e) {
     log.error(e.message);
     if (program.debug) {
@@ -35,9 +42,16 @@ function registerCommand() {
     .option('-d, --debug', '是否开启调试模式', false)
     .option('-tp, --targetPath <targetPath>', '是否指定本地调试文件路径', '');
 
-  program
-    .command('init [projectName]')
-    .option('-f, --force', '是否强制初始化项目')
+    program
+    .command('init [type]')
+    .description('项目初始化')
+    .option('--packagePath <packagePath>', '手动指定init包路径')
+    .option('--force', '覆盖当前路径文件（谨慎使用）')
+    // .action(async (type, { packagePath, force }) => {
+    //   const packageName = '@chint-cli-test/init';
+    //   const packageVersion = '1.0.0';
+    //   await execCommand({ packagePath, packageName, packageVersion }, { type, force });
+    // });
 
   program
     .command('add [templateName]')
@@ -87,21 +101,20 @@ function registerCommand() {
 }
 
 async function prepare() {
-  checkPkgVersion();
-  checkRoot();
-  checkUserHome();
-  checkEnv();
-  await checkGlobalUpdate();
+  checkPkgVersion(); // 检查当前运行版本
+  checkNodeVersion(); // 检查 node 版本
+  checkRoot(); // 检查是否为 root 启动
+  checkUserHome(); // 检查用户主目录
+  checkEnv(); // 检查环境变量
+  await checkGlobalUpdate(); // 检查工具是否需要更新
 }
-
 async function checkGlobalUpdate() {
   const currentVersion = pkg.version;
-  const npmName = pkg.name;
   const { getNpmSemverVersion } = require('@chint-cli-test/get-npm-info');
-  const lastVersion = await getNpmSemverVersion(currentVersion, npmName);
+  const lastVersion = await getNpmSemverVersion(currentVersion, NPM_NAME);
   if (lastVersion && semver.gt(lastVersion, currentVersion)) {
-    log.warn(colors.yellow(`请手动更新 ${npmName}，当前版本：${currentVersion}，最新版本：${lastVersion}
-                更新命令： npm install -g ${npmName}`));
+    log.warn(colors.yellow(`请手动更新 ${NPM_NAME}，当前版本：${currentVersion}，最新版本：${lastVersion}
+                更新命令： npm install -g ${NPM_NAME}`));
   }
 }
 
@@ -123,9 +136,9 @@ function createDefaultConfig() {
   if (process.env.CLI_HOME) {
     cliConfig['cliHome'] = path.join(userHome, process.env.CLI_HOME);
   } else {
-    cliConfig['cliHome'] = path.join(userHome, constant.DEFAULT_CLI_HOME);
+    cliConfig['cliHome'] = path.join(userHome, DEFAULT_CLI_HOME);
   }
-  process.env.CLI_HOME_PATH = cliConfig.cliHome;
+  return cliConfig;
 }
 
 function checkUserHome() {
@@ -141,6 +154,12 @@ function checkRoot() {
 
 function checkPkgVersion() {
   log.info('cli', pkg.version);
+}
+function checkNodeVersion() {
+  const semver = require('semver');
+  if (!semver.gte(process.version, LOWEST_NODE_VERSION)) {
+    throw new Error(colors.red(`imooc-cli 需要安装 v${LOWEST_NODE_VERSION} 以上版本的 Node.js`));
+  }
 }
 
 process.on('unhandledRejection', (reason, p) => {
