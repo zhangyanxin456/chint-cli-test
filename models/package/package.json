@@ -13,6 +13,9 @@
   "files": [
     "lib"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zhangyanxin456/chint-cli-test.git"
@@ -22,5 +25,6 @@
   },
   "bugs": {
     "url": "https://github.com/zhangyanxin456/chint-cli-test/issues"
-  }
+  },
+  "gitHead": "025290865cdc5a68c98114bf2b673e96ad131f99"
 }
