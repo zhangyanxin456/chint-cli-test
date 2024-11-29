@@ -1,66 +1,69 @@
-'use strict';
-
 const axios = require('axios');
-const urlJoin = require('url-join');
-const semver = require('semver');
+const urlJoin = require("url-join");
+const semver = require("semver");
 
+// 获取 registry 信息
+function getNpmRegistry(isOriginal = false) {
+  return isOriginal ? 'https://registry.npmjs.org' :
+    'https://registry.npm.taobao.org';
+}
 
-function getNpmInfo(npmName, registry) {
-  if (!npmName) {
-    return null;
-  }
-  const registryUrl = registry || getDefaultRegistry();
-  const npmInfoUrl = urlJoin(registryUrl, npmName);
-  return axios.get(npmInfoUrl).then(response => {
-    if (response.status === 200) {
-      return response.data;
+// 从 registry 获取 npm 的信息
+function getNpmInfo(npm, registry) {
+  const register = registry || getNpmRegistry();
+  const url = urlJoin(register, npm);
+  return axios.get(url).then(function(response) {
+    console.log(response, 16161);
+    try {
+      if (response.status === 200) {
+        return response.data;
+      }
+    } catch (error) {
+      return Promise.reject(error);
     }
-    return null;
-  }).catch(err => {
-    return Promise.reject(err);
   });
 }
 
-function getDefaultRegistry(isOriginal = false) {
-  return isOriginal ? 'https://registry.npmjs.org' : 'https://registry.npm.taobao.org';
+// 获取某个 npm 的最新版本号
+function getLatestVersion(npm, registry) {
+  return getNpmInfo(npm, registry).then(function (data) {
+    if (!data['dist-tags'] || !data['dist-tags'].latest) {
+      console.error('没有 latest 版本号', data);
+      return Promise.reject(new Error('Error: 没有 latest 版本号'));
+    }
+    const latestVersion = data['dist-tags'].latest;
+    return latestVersion;
+  });
 }
 
-async function getNpmVersions(npmName, registry) {
-  const data = await getNpmInfo(npmName, registry);
-  if (data) {
-    return Object.keys(data.versions);
-  } else {
-    return [];
-  }
+// 获取某个 npm 的所有版本号
+function getVersions(npm, registry) {
+  return getNpmInfo(npm, registry).then(function (body) {
+    const versions = Object.keys(body.versions);
+    return versions;
+  });
 }
 
-function getSemverVersions(baseVersion, versions) {
-  return versions
-    .filter(version => semver.satisfies(version, `>${baseVersion}`))
-    .sort((a, b) => semver.gt(b, a) ? 1 : -1);
+// 根据指定 version 获取符合 semver 规范的最新版本号
+function getLatestSemverVersion(baseVersion, versions) {
+  versions = versions
+    .filter(function (version) { return semver.satisfies(version, "^" + baseVersion); })
+    .sort(function (a, b) {
+      return semver.gt(b, a);
+    });
+  return versions[0];
 }
 
-async function getNpmSemverVersion(baseVersion, npmName, registry) {
-  const versions = await getNpmVersions(npmName, registry);
-  const newVersions = getSemverVersions(baseVersion, versions);
-  if (newVersions && newVersions.length > 0) {
-    return newVersions[0];
-  }
-  return null;
-}
-
-async function getNpmLatestVersion(npmName, registry) {
-  let versions = await getNpmVersions(npmName, registry);
-  if (versions) {
-    return versions.sort((a, b) => semver.gt(b, a))[versions.length - 1];
-  }
-  return null;
+// 根据指定 version 和包名获取符合 semver 规范的最新版本号
+function getNpmLatestSemverVersion(npm, baseVersion, registry) {
+  return getVersions(npm, registry).then(function (versions) {
+    return getLatestSemverVersion(baseVersion, versions);
+  });
 }
 
 module.exports = {
+  getNpmRegistry,
   getNpmInfo,
-  getNpmVersions,
-  getNpmSemverVersion,
-  getDefaultRegistry,
-  getNpmLatestVersion,
+  getLatestVersion,
+  getNpmLatestSemverVersion,
 };

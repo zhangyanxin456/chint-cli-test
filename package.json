@@ -1,6 +1,6 @@
 {
   "name": "chint-cli-test",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "chint-cli-test",
   "main": "",
   "scripts": {
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/zhangyanxin456/chint-cli-test#readme",
   "dependencies": {
+    "@chint-cli-test/get-npm-info": "^1.0.1",
     "@chint-cli-test/log": "^1.0.3",
     "axios": "^1.7.8",
     "colors": "^1.4.0",
@@ -25,7 +26,7 @@
     "path-exists": "^4.0.0",
     "root-check": "^1.0.0",
     "semver": "^7.6.3",
-    "url-join": "^5.0.0",
+    "url-join": "^4.0.0",
     "user-home": "^3.0.0"
   },
   "devDependencies": {

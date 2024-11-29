@@ -40,7 +40,7 @@ function registerCommand() {
     .usage('<command> [options]')
     .version(pkg.version)
     .option('-d, --debug', '是否开启调试模式', false)
-    .option('-tp, --targetPath <targetPath>', '是否指定本地调试文件路径', '');
+    // .option('-tp, --targetPath <targetPath>', '是否指定本地调试文件路径', '');
 
     program
     .command('init [type]')
@@ -80,6 +80,7 @@ function registerCommand() {
 
   // 指定targetPath
   program.on('option:targetPath', function() {
+    console.log(program.targetPath, 8383838)
     process.env.CLI_TARGET_PATH = program.targetPath;
   });
 
@@ -106,16 +107,6 @@ async function prepare() {
   checkRoot(); // 检查是否为 root 启动
   checkUserHome(); // 检查用户主目录
   checkEnv(); // 检查环境变量
-  await checkGlobalUpdate(); // 检查工具是否需要更新
-}
-async function checkGlobalUpdate() {
-  const currentVersion = pkg.version;
-  const { getNpmSemverVersion } = require('@chint-cli-test/get-npm-info');
-  const lastVersion = await getNpmSemverVersion(currentVersion, NPM_NAME);
-  if (lastVersion && semver.gt(lastVersion, currentVersion)) {
-    log.warn(colors.yellow(`请手动更新 ${NPM_NAME}，当前版本：${currentVersion}，最新版本：${lastVersion}
-                更新命令： npm install -g ${NPM_NAME}`));
-  }
 }
 
 function checkEnv() {

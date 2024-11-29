@@ -1,0 +1,29 @@
+{
+  "name": "@chint-cli-test/exec",
+  "version": "1.0.0",
+  "description": "chint-cli-test exec",
+  "author": "zhangyanxin456 <zhangyx26454@yunrong.cn>",
+  "homepage": "https://github.com/zhangyanxin456/chint-cli-test/tree/main/core/exec#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangyanxin456/chint-cli-test.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "node ./__tests__/exec.test.js"
+  },
+  "bugs": {
+    "url": "https://github.com/zhangyanxin456/chint-cli-test/issues"
+  }
+}
