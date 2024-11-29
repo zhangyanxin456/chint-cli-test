@@ -3,18 +3,16 @@
 module.exports = core;
 
 const path = require('path');
-const semver = require('semver');
 const colors = require('colors/safe');
 const userHome = require('user-home');
 const pathExists = require('path-exists').sync;
 const commander = require('commander');
 const log = require('@chint-cli-test/log');
-
+const exec = require('@chint-cli-test/exec');
 const constant = require('./const');
 const pkg = require('../package.json');
 
 const program = new commander.Command();
-
 const {
   LOWEST_NODE_VERSION,
   DEFAULT_CLI_HOME,
@@ -27,7 +25,7 @@ async function core() {
     await prepare();
     registerCommand();
   } catch (e) {
-    log.error(e.message);
+    log.error(e.message, e);
     if (program.debug) {
       console.log(e);
     }
@@ -40,13 +38,13 @@ function registerCommand() {
     .usage('<command> [options]')
     .version(pkg.version)
     .option('-d, --debug', '是否开启调试模式', false)
-    // .option('-tp, --targetPath <targetPath>', '是否指定本地调试文件路径', '');
 
     program
-    .command('init [type]')
-    .description('项目初始化')
-    .option('--packagePath <packagePath>', '手动指定init包路径')
-    .option('--force', '覆盖当前路径文件（谨慎使用）')
+      .command('init [projectName]')
+      .option('-f, --force', '是否强制初始化项目')
+      .option('--packagePath <packagePath>', '手动指定init包路径')
+      .option('-tp, --targetPath <targetPath>', '是否指定本地调试文件路径', '')
+      .action((str, options) => exec(str, options));
     // .action(async (type, { packagePath, force }) => {
     //   const packageName = '@chint-cli-test/init';
     //   const packageVersion = '1.0.0';
@@ -79,10 +77,10 @@ function registerCommand() {
   });
 
   // 指定targetPath
-  program.on('option:targetPath', function() {
-    console.log(program.targetPath, 8383838)
-    process.env.CLI_TARGET_PATH = program.targetPath;
-  });
+  // program.on('option:targetPath', function() {
+  //   console.log(program.targetPath)
+  //   process.env.CLI_TARGET_PATH = program.targetPath;
+  // });
 
   // 对未知命令监听
   program.on('command:*', function(obj) {
