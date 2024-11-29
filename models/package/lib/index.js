@@ -2,7 +2,7 @@
 
 class Package {
   constructor() {
-    console.log('Package');
+    console.log('Packag111e');
   }
 }
 module.exports = Package;
