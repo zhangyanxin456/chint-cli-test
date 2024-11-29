@@ -3,16 +3,9 @@
   registry: 'https://registry.npmmirror.com',
   pkgs: [
     {
-      name: '@chint-cli-test/log',
+      name: '@chint-cli-test/get-npm-info',
       version: 'latest',
       type: 'tag',
-      alias: undefined,
-      arg: [Result]
-    },
-    {
-      name: '',
-      version: 'core/cli',
-      type: 'git',
       alias: undefined,
       arg: [Result]
     }
@@ -22,7 +15,7 @@
   cacheDir: '/Users/zhangyanxin/.npminstall_tarball',
   env: {
     npm_config_registry: 'https://registry.npmmirror.com',
-    npm_config_argv: '{"remain":[],"cooked":["--fix-bug-versions","--china","--userconfig=/Users/zhangyanxin/.cnpmrc","--disturl=https://cdn.npmmirror.com/binaries/node","--registry=https://registry.npmmirror.com","@chint-cli-test/log","core/cli"],"original":["--fix-bug-versions","--china","--userconfig=/Users/zhangyanxin/.cnpmrc","--disturl=https://cdn.npmmirror.com/binaries/node","--registry=https://registry.npmmirror.com","@chint-cli-test/log","core/cli"]}',
+    npm_config_argv: '{"remain":[],"cooked":["--fix-bug-versions","--china","--userconfig=/Users/zhangyanxin/.cnpmrc","--disturl=https://cdn.npmmirror.com/binaries/node","--registry=https://registry.npmmirror.com","@chint-cli-test/get-npm-info","--workspace=core/cli"],"original":["--fix-bug-versions","--china","--userconfig=/Users/zhangyanxin/.cnpmrc","--disturl=https://cdn.npmmirror.com/binaries/node","--registry=https://registry.npmmirror.com","@chint-cli-test/get-npm-info","--workspace=core/cli"]}',
     npm_config_user_agent: 'npminstall/7.12.0 npm/? node/v18.15.0 darwin arm64',
     npm_config_cache: '/Users/zhangyanxin/.npminstall_tarball',
     NODE: '/Users/zhangyanxin/.nvm/versions/node/v18.15.0/bin/node',
@@ -31,6 +24,8 @@
     npm_config_userconfig: '/Users/zhangyanxin/.cnpmrc',
     npm_config_disturl: 'https://cdn.npmmirror.com/binaries/node',
     npm_config_r: 'https://registry.npmmirror.com',
+    npm_config_workspace: 'core/cli',
+    npm_config_w: 'core/cli',
     COREPACK_NPM_REGISTRY: 'https://registry.npmmirror.com',
     EDGEDRIVER_CDNURL: 'https://npmmirror.com/mirrors/edgedriver',
     NODEJS_ORG_MIRROR: 'https://cdn.npmmirror.com/binaries/node',
