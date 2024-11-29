@@ -17,6 +17,9 @@
     "type": "git",
     "url": "git+https://github.com/zhangyanxin456/chint-cli-test.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "node ./__tests__/get-npm-info.test.js"
   },
