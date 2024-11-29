@@ -1,20 +1,4 @@
-0 silly argv {
-0 silly argv   _: [ 'create' ],
-0 silly argv   lernaVersion: '8.1.9',
-0 silly argv   '$0': 'lerna',
-0 silly argv   name: 'cli',
-0 silly argv   loc: 'core'
-0 silly argv }
-1 notice cli v8.1.9
-2 verbose packageConfigs Explicit "packages" configuration found in lerna.json. Resolving packages using the configured glob(s): ["core/*"]
-3 verbose rootPath /Users/zhangyanxin/Desktop/work/chint-cli-test
-4 error Error: canceled
-4 error     at Interface.<anonymous> (/Users/zhangyanxin/Desktop/work/chint-cli-test/node_modules/read/dist/commonjs/read.js:89:21)
-4 error     at Interface.emit (node:events:513:28)
-4 error     at [_ttyWrite] [as _ttyWrite] (node:internal/readline/interface:1131:18)
-4 error     at ReadStream.onkeypress (node:internal/readline/interface:270:20)
-4 error     at ReadStream.emit (node:events:513:28)
-4 error     at emitKeys (node:internal/readline/utils:357:14)
-4 error     at emitKeys.next (<anonymous>)
-4 error     at ReadStream.onData (node:internal/readline/emitKeypressEvents:64:36)
-4 error     at ReadStream.emit (node:events:513:28)
+67 error Error: Command failed with exit code 128: git push --follow-tags --no-verify --atomic origin main
+67 error fatal: unable to access 'https://github.com/zhangyanxin456/chint-cli-test.git/': Failed to connect to github.com port 443 after 75005 ms: Couldn't connect to server
+67 error     at makeError (/Users/zhangyanxin/Desktop/work/chint-cli-test/node_modules/execa/lib/error.js:59:11)
+67 error     at handlePromise (/Users/zhangyanxin/Desktop/work/chint-cli-test/node_modules/execa/index.js:114:26)
