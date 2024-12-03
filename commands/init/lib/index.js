@@ -2,7 +2,7 @@
 
 const log = require('@chint-cli-test/log');
 function init() {
-  log.info('init -1哈哈哈')
+  log.info('init -2221哈哈哈')
   return 'Hello from init';
 }
 module.exports = init;
