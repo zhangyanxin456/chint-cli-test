@@ -3,6 +3,7 @@
   "packages": [
     "core/*",
     "utils/*",
-    "models/*"
+    "models/*",
+    "commands/*"
   ]
 }
