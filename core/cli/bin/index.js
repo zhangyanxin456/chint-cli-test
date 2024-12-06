@@ -77,7 +77,7 @@ function registerCommand() {
   // });
 
   // 对未知命令监听
-  program.on("command:*", function (obj) {
+  program.on("command:*", function () {
     const availableCommands = program.commands.map((cmd) => cmd.name());
     if (availableCommands.length > 0) {
     }
