@@ -144,7 +144,6 @@ function checkNodeVersion() {
 
 process.on("unhandledRejection", (reason, p) => {
   // 我刚刚捕获了一个未处理的promise rejection
-  console.log("unhandledRejection", reason, p);
   throw reason;
 });
 
