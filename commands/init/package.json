@@ -25,5 +25,14 @@
   },
   "bugs": {
     "url": "https://github.com/zhangyanxin456/chint-cli-test/issues"
+  },
+  "dependencies": {
+    "@chint-cli-test/log": "^1.1.4",
+    "ejs": "^3.1.10",
+    "fs-extra": "^11.2.0",
+    "glob": "^7.1.6",
+    "inquirer": "^12.1.0",
+    "lodash": "^4.17.21",
+    "simple-git": "^3.27.0"
   }
 }

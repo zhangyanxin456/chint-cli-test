@@ -25,5 +25,8 @@
   },
   "bugs": {
     "url": "https://github.com/zhangyanxin456/chint-cli-test/issues"
+  },
+  "dependencies": {
+    "npmlog": "^7.0.1"
   }
 }
