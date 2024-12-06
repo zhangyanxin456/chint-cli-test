@@ -13,10 +13,7 @@ const log = require("@chint-cli-test/log");
 const init = require('@chint-cli-test/init');
 const pkg = require("../package.json");
 const program = new commander.Command();
-const {
-  LOWEST_NODE_VERSION,
-  DEFAULT_CLI_HOME,
-} = require("./const");
+
 const LOWEST_NODE_VERSION = '18.0.0';
 const DEFAULT_CLI_HOME = '.chint-cli-test';
 async function core() {
