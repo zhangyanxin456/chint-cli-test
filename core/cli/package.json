@@ -38,6 +38,7 @@
     "dotenv": "^16.4.7",
     "path-exists": "^4.0.0",
     "root-check": "^1.0.0",
+    "semver": "^7.6.3",
     "user-home": "^3.0.0"
   }
 }
