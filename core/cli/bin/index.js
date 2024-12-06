@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 "use strict";
 
 module.exports = core;
@@ -155,3 +157,4 @@ process.on("uncaughtException", (error) => {
   console.log("uncaughtException", error);
   process.exit(1);
 });
+
