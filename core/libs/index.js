@@ -36,9 +36,6 @@ function registerCommand() {
     .option("-d, --debug", "是否开启调试模式", false);
 
   program
-    // .command('init [projectName]')
-    // .option('-f, --force', '是否强制初始化项目')
-    // .option('-tp, --targetPath <targetPath>', '是否指定本地调试文件路径', '')
     .command("init [type]")
     .description("项目初始化")
     .option("--packagePath <packagePath>", "手动指定init包路径")
