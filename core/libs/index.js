@@ -8,18 +8,13 @@ const userHome = require("user-home");
 const pathExists = require("path-exists").sync;
 const commander = require("commander");
 const log = require("@chint-cli-test/log");
-const exec = require("@chint-cli-test/exec");
 const init = require('@chint-cli-test/init');
-const constant = require("./const");
 const pkg = require("../package.json");
-const Package = require('@chint-cli-test/package');
 const program = new commander.Command();
 const {
   LOWEST_NODE_VERSION,
   DEFAULT_CLI_HOME,
-  NPM_NAME,
-  DEPENDENCIES_PATH,
-} = require("../libs/const");
+} = require("./const");
 
 async function core() {
   try {
@@ -44,21 +39,12 @@ function registerCommand() {
     // .command('init [projectName]')
     // .option('-f, --force', '是否强制初始化项目')
     // .option('-tp, --targetPath <targetPath>', '是否指定本地调试文件路径', '')
-    // .action((str, options) => exec(str, options));
     .command("init [type]")
     .description("项目初始化")
     .option("--packagePath <packagePath>", "手动指定init包路径")
     .option('-tp, --targetPath <targetPath>', '是否指定本地调试文件路径', '')
     .option("--force", "覆盖当前路径文件（谨慎使用）")
     .action(() => init({}));
-    // async (type, { packagePath, force }) => {
-    //   const packageName = "@chint-cli-test/init";
-    //   const packageVersion = "1.0.0";
-    //   await execCommand(
-    //     { packagePath, packageName, packageVersion },
-    //     { type, force }
-    //   );
-    // }
   program
     .command("add [templateName]")
     .option("-f, --force", "是否强制添加代码");
