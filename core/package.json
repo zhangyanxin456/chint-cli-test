@@ -31,7 +31,6 @@
   },
   "gitHead": "025290865cdc5a68c98114bf2b673e96ad131f99",
   "dependencies": {
-    "@chint-cli-test/exec": "^1.1.2",
     "@chint-cli-test/init": "^1.1.2"
   }
 }

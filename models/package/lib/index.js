@@ -104,7 +104,7 @@ class Package {
       return p;
     }
     function _getRootFile(targetPath) {
-      // 1. 获取package.json所在目录
+      // 1. 获取package.json所在目录 
       const dir = pkgDir(targetPath);
       if (dir) {
         // 2. 读取package.json
