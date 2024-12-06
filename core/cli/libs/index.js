@@ -9,10 +9,10 @@ const pathExists = require("path-exists").sync;
 const commander = require("commander");
 const log = require("@chint-cli-test/log");
 const exec = require("@chint-cli-test/exec");
+const init = require('@chint-cli-test/init');
 const constant = require("./const");
 const pkg = require("../package.json");
 const Package = require('@chint-cli-test/package');
-
 const program = new commander.Command();
 const {
   LOWEST_NODE_VERSION,
@@ -26,36 +26,13 @@ async function core() {
     await prepare();
     registerCommand();
   } catch (e) {
-    log.error(e.message, 28282828882);
+    log.error(e.message, 28282828882,);
     if (program.debug) {
       console.log(e);
     }
   }
 }
-async function execCommand(
-  { packagePath, packageName, packageVersion },
-  extraOptions
-) {
-  try {
-    const cliHome = process.env.CLI_HOME
-    const packageDir = 'dependencies';
-    const targetPath = path.resolve(cliHome, packageDir);
-    const storeDir = path.resolve(targetPath, "node_modules");
-    const initPackage = new Package({
-      targetPath,
-      storeDir,
-      packageName,
-      packageVersion
-    });
-    if (await initPackage.exists()) {
-      await initPackage.update();
-    } else {
-      await initPackage.install();
-    }
-  } catch (e) {
-    log.error(e.message);
-  }
-}
+
 function registerCommand() {
   program
     .name(Object.keys(pkg.bin)[0])
@@ -66,22 +43,22 @@ function registerCommand() {
   program
     // .command('init [projectName]')
     // .option('-f, --force', '是否强制初始化项目')
-    // .option('--packagePath <packagePath>', '手动指定init包路径')
     // .option('-tp, --targetPath <targetPath>', '是否指定本地调试文件路径', '')
     // .action((str, options) => exec(str, options));
     .command("init [type]")
     .description("项目初始化")
     .option("--packagePath <packagePath>", "手动指定init包路径")
+    .option('-tp, --targetPath <targetPath>', '是否指定本地调试文件路径', '')
     .option("--force", "覆盖当前路径文件（谨慎使用）")
-    .action(async (type, { packagePath, force }) => {
-      const packageName = "@chint-cli-test/init";
-      const packageVersion = "1.0.0";
-      await execCommand(
-        { packagePath, packageName, packageVersion },
-        { type, force }
-      );
-    });
-
+    .action(() => init({}));
+    // async (type, { packagePath, force }) => {
+    //   const packageName = "@chint-cli-test/init";
+    //   const packageVersion = "1.0.0";
+    //   await execCommand(
+    //     { packagePath, packageName, packageVersion },
+    //     { type, force }
+    //   );
+    // }
   program
     .command("add [templateName]")
     .option("-f, --force", "是否强制添加代码");
@@ -116,9 +93,7 @@ function registerCommand() {
   // 对未知命令监听
   program.on("command:*", function (obj) {
     const availableCommands = program.commands.map((cmd) => cmd.name());
-    console.log(colors.red("未知的命令：" + obj[0]));
     if (availableCommands.length > 0) {
-      console.log(colors.red("可用命令：" + availableCommands.join(",")));
     }
   });
 
