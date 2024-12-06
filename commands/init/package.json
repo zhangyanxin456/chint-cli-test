@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@chint-cli-test/log": "^1.1.10",
+    "cli-spinner": "^0.2.10",
     "ejs": "^3.1.10",
     "fs-extra": "^11.2.0",
     "glob": "^7.1.6",
