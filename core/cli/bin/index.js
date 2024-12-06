@@ -17,7 +17,8 @@ const {
   LOWEST_NODE_VERSION,
   DEFAULT_CLI_HOME,
 } = require("./const");
-
+const LOWEST_NODE_VERSION = '18.0.0';
+const DEFAULT_CLI_HOME = '.chint-cli-test';
 async function core() {
   try {
     await prepare();
