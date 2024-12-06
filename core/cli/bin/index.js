@@ -93,7 +93,7 @@ function registerCommand() {
 
 async function prepare() {
   checkPkgVersion(); // 检查当前运行版本
-  checkNodeVersion(); // 检查 node 版本
+  checkNodeVersion(); // 检查node版本
   checkRoot(); // 检查是否为 root 启动
   checkUserHome(); // 检查用户主目录
   checkEnv(); // 检查环境变量
