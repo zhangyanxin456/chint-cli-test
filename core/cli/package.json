@@ -36,6 +36,7 @@
     "colors": "^1.4.0",
     "commander": "^12.1.0",
     "path-exists": "^4.0.0",
+    "root-check": "^1.0.0",
     "user-home": "^3.0.0"
   }
 }
