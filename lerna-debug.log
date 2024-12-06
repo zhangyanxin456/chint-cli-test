@@ -1,14 +1,4 @@
-0 silly argv {
-0 silly argv   _: [ 'create' ],
-0 silly argv   lernaVersion: '8.1.9',
-0 silly argv   '$0': 'lerna',
-0 silly argv   name: 'cli',
-0 silly argv   loc: 'core'
-0 silly argv }
-1 notice cli v8.1.9
-2 verbose packageConfigs Explicit "packages" configuration found in lerna.json. Resolving packages using the configured glob(s): ["core/*","utils/*","models/*","commands/*"]
-3 verbose rootPath /Users/zhangyanxin/Desktop/work/chint-cli-test
-4 error TypeError: files is not iterable
-4 error     at normalize (/Users/zhangyanxin/Desktop/work/chint-cli-test/node_modules/@npmcli/package-json/lib/normalize.js:335:24)
-4 error     at async PackageJson.normalize (/Users/zhangyanxin/Desktop/work/chint-cli-test/node_modules/@npmcli/package-json/lib/index.js:258:5)
-4 error     at async init (/Users/zhangyanxin/Desktop/work/chint-cli-test/node_modules/init-package-json/lib/init-package-json.js:80:3)
+51 error Error: Command failed with exit code 128: git push --follow-tags --no-verify --atomic origin main
+51 error fatal: unable to access 'https://github.com/zhangyanxin456/chint-cli-test.git/': Failure when receiving data from the peer
+51 error     at makeError (/Users/zhangyanxin/Desktop/work/chint-cli-test/node_modules/execa/lib/error.js:59:11)
+51 error     at handlePromise (/Users/zhangyanxin/Desktop/work/chint-cli-test/node_modules/execa/index.js:114:26)

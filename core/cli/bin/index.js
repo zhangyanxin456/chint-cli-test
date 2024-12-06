@@ -140,7 +140,7 @@ function checkNodeVersion() {
   if (!semver.gte(process.version, LOWEST_NODE_VERSION)) {
     throw new Error(
       colors.red(
-        `imooc-cli 需要安装 v${LOWEST_NODE_VERSION} 以上版本的 Node.js`
+        `chint-cli-test 需要安装 v${LOWEST_NODE_VERSION} 以上版本的 Node.js`
       )
     );
   }
