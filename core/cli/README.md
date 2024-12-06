@@ -4,8 +4,14 @@
 
 ## Usage
 
-```
-const cli = require('@chint-cli-test/core');
+安装：
 
-// TODO: DEMONSTRATE API
+```bash
+npm install -g @chint-cli-test/core
+```
+
+创建项目
+
+```bash
+chint-cli-test init 
 ```
