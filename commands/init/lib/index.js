@@ -8,14 +8,11 @@ const path = require('path');
 const {glob} = require('glob');
 const ejs = require('ejs');
 const get = require('lodash/get');
-// const getProjectTemplate = require('./getProjectTemplate');
 const simpleGit = require('simple-git');
 const COMPONENT_FILE = '.componentrc';
 const TYPE_PROJECT = 'project';
 const TYPE_COMPONENT = 'component';
-const TEMPLATE_TYPE_NORMAL = 'normal';
 const Spinner = require('cli-spinner').Spinner
-const TEMPLATE_TYPE_CUSTOM = 'custom';
 const templateList = [
   {
     name: 'vue3',

@@ -4,7 +4,6 @@ const { getDefaultRegistry, getNpmLatestVersion } = require('@chint-cli-test/get
 const npminstall = require('npminstall');
 const path = require('path');
 const userHome = require("user-home");
-const pathExists = require('path-exists').sync;
 const fse = require('fs-extra');
 const fs = require('fs');
 const pkgDir = require('pkg-dir').sync;

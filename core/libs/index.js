@@ -145,7 +145,7 @@ function checkNodeVersion() {
 }
 
 process.on("unhandledRejection", (reason, p) => {
-  // 我刚刚捕获了一个未处理的promise rejection, 因为我们已经有了对于未处理错误的后备的处理机制（见下面）, 直接抛出，让它来处理
+  // 我刚刚捕获了一个未处理的promise rejection, 
   console.log("unhandledRejection", reason, p);
   throw reason;
 });

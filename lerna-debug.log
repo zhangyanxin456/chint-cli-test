@@ -1,4 +1,9 @@
-52 error Error: Command failed with exit code 128: git push --follow-tags --no-verify --atomic origin main
-52 error fatal: unable to access 'https://github.com/zhangyanxin456/chint-cli-test.git/': Failed sending data to the peer
-52 error     at makeError (/Users/zhangyanxin/Desktop/work/chint-cli-test/node_modules/execa/lib/error.js:59:11)
-52 error     at handlePromise (/Users/zhangyanxin/Desktop/work/chint-cli-test/node_modules/execa/index.js:114:26)
+17 error Error: Command failed with exit code 1: git remote update
+17 error fatal: unable to access 'https://github.com/zhangyanxin456/chint-cli-test.git/': Failed to connect to github.com port 443 after 75016 ms: Couldn't connect to server
+17 error     at makeError (/Users/zhangyanxin/Desktop/work/chint-cli-test/node_modules/execa/lib/error.js:59:11)
+17 error     at module.exports.sync (/Users/zhangyanxin/Desktop/work/chint-cli-test/node_modules/execa/index.js:186:17)
+17 error     at Object.execSync (/Users/zhangyanxin/Desktop/work/chint-cli-test/node_modules/lerna/dist/index.js:1579:31)
+17 error     at updateRemote (/Users/zhangyanxin/Desktop/work/chint-cli-test/node_modules/lerna/dist/index.js:9202:18)
+17 error     at isBehindUpstream (/Users/zhangyanxin/Desktop/work/chint-cli-test/node_modules/lerna/dist/index.js:9192:3)
+17 error     at VersionCommand.initialize (/Users/zhangyanxin/Desktop/work/chint-cli-test/node_modules/lerna/dist/index.js:9486:57)
+17 error     at VersionCommand.runCommand (/Users/zhangyanxin/Desktop/work/chint-cli-test/node_modules/lerna/dist/index.js:3296:36)

@@ -36,7 +36,7 @@ function getLatestVersion(npm, registry) {
   });
 }
 
-// 获取某个 npm 的所有版本号
+// 获取某个npm 的所有版本号
 function getVersions(npm, registry) {
   return getNpmInfo(npm, registry).then(function (body) {
     const versions = Object.keys(body.versions);
