@@ -5,7 +5,7 @@
 ## Usage
 
 ```
-const cli = require('cli');
+const cli = require('@chint-cli-test/core');
 
 // TODO: DEMONSTRATE API
 ```
