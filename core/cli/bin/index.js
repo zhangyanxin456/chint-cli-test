@@ -21,7 +21,7 @@ async function core() {
     await prepare();
     registerCommand();
   } catch (e) {
-    log.error(e.message, 28282828882,);
+    log.error(e.message);
     if (program.debug) {
       console.log(e);
     }
