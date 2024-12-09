@@ -299,8 +299,6 @@ async function prepare(options) {
         version,
         gitRepo,
         appName,
-        // isNeedPoint,
-        // pointSysCode
       },
     };
   } else {
