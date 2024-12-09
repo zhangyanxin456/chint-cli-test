@@ -298,7 +298,7 @@ async function prepare(options) {
         className,
         version,
         gitRepo,
-        appName
+        appName,
         // isNeedPoint,
         // pointSysCode
       },
