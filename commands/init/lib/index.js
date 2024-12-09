@@ -279,7 +279,7 @@ async function prepare(options) {
   let version = '1.0.0';
   do {
     version = await getProjectVersion(version, initType);
-    log.verbose('version', version);
+    log.info('version', version);
   } while (!version);
   // let isNeedPoint = await getProjectBurialPointInfo();
   // let pointSysCode = '';
@@ -289,7 +289,11 @@ async function prepare(options) {
   //   }
   // }
   let appName = await getAppName();
-  let gitRepo = getGitRepo();
+  let gitRepo = '';
+  do {
+    gitRepo = await getGitRepo();
+    log.info('version', gitRepo);
+  } while (!gitRepo);
   if (initType === TYPE_PROJECT) {
     return {
       // templateList,
