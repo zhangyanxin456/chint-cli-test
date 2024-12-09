@@ -1,6 +1,6 @@
 {
   "name": "@chint-cli-test/core",
-  "version": "1.1.17",
+  "version": "1.1.18",
   "description": "> TODO: description",
   "author": "zhangyanxin456 <zhangyx26454@yunrong.cn>",
   "homepage": "https://github.com/zhangyanxin456/chint-cli-test/tree/main/core/cli#readme",
@@ -31,7 +31,7 @@
   },
   "gitHead": "ece74b22dcd56ed1ad3f744a70f8f5c9b9af5228",
   "dependencies": {
-    "@chint-cli-test/init": "^1.1.17",
+    "@chint-cli-test/init": "^1.1.18",
     "@chint-cli-test/log": "^1.1.10",
     "colors": "^1.4.0",
     "commander": "^12.1.0",
