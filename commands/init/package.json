@@ -1,6 +1,6 @@
 {
   "name": "@chint-cli-test/init",
-  "version": "1.1.11",
+  "version": "1.1.18",
   "description": "init ",
   "author": "zhangyanxin456 <zhangyx26454@yunrong.cn>",
   "homepage": "https://github.com/zhangyanxin456/chint-cli-test/tree/main/commands/init#readme",
@@ -35,5 +35,6 @@
     "inquirer": "^12.1.0",
     "lodash": "^4.17.21",
     "simple-git": "^3.27.0"
-  }
+  },
+  "gitHead": "ece74b22dcd56ed1ad3f744a70f8f5c9b9af5228"
 }

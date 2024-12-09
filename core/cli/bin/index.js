@@ -2,7 +2,6 @@
 
 "use strict";
 
-module.exports = core;
 
 const path = require("path");
 const colors = require("colors/safe");
@@ -27,7 +26,6 @@ async function core() {
     }
   }
 }
-
 function registerCommand() {
   program
     .name(Object.keys(pkg.bin)[0])
@@ -146,7 +144,6 @@ function checkNodeVersion() {
 
 process.on("unhandledRejection", (reason, p) => {
   // 我刚刚捕获了一个未处理的promise rejection
-  console.log("unhandledRejection", reason, p);
   throw reason;
 });
 
@@ -156,3 +153,5 @@ process.on("uncaughtException", (error) => {
   process.exit(1);
 });
 
+
+core()

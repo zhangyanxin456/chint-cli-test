@@ -16,3 +16,8 @@ npm install -g @chint-cli-test/core
 ```bash
 chint-cli-test init 
 ```
+发布项目
+
+```bash
+chint-cli-test publish 
+```
