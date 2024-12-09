@@ -16,7 +16,7 @@ const Spinner = require('cli-spinner').Spinner
 const templateList = [
   {
     name: 'vue3',
-    gitPath: 'https://github.com/zhangyanxin456/vue3-basic.git'
+    gitPath: 'http://gitlab.chintanneng.com/front_end/vue3-basic-project.git'
   },
   {
     name: 'react',
