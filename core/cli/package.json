@@ -29,7 +29,7 @@
   "bugs": {
     "url": "https://github.com/zhangyanxin456/chint-cli-test/issues"
   },
-  "gitHead": "025290865cdc5a68c98114bf2b673e96ad131f99",
+  "gitHead": "ece74b22dcd56ed1ad3f744a70f8f5c9b9af5228",
   "dependencies": {
     "@chint-cli-test/init": "^1.1.17",
     "@chint-cli-test/log": "^1.1.10",
