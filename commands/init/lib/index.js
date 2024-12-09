@@ -280,13 +280,15 @@ async function prepare(options) {
     version = await getProjectVersion(version, initType);
     log.verbose('version', version);
   } while (!version);
-  let isNeedPoint = await getProjectBurialPointInfo();
-  let pointSysCode = '';
-  if (isNeedPoint === 'Y') {
-    while (!pointSysCode) {
-      pointSysCode = await getProjectBurialPointSysCode();
-    }
-  }
+  // let isNeedPoint = await getProjectBurialPointInfo();
+  // let pointSysCode = '';
+  // if (isNeedPoint === 'Y') {
+  //   while (!pointSysCode) {
+  //     pointSysCode = await getProjectBurialPointSysCode();
+  //   }
+  // }
+  let appName = await getAppName();
+  let gitRepo = getGitRepo();
   if (initType === TYPE_PROJECT) {
     return {
       // templateList,
@@ -294,8 +296,10 @@ async function prepare(options) {
         name: projectName,
         className,
         version,
-        isNeedPoint,
-        pointSysCode
+        gitRepo,
+        appName
+        // isNeedPoint,
+        // pointSysCode
       },
     };
   } else {
@@ -309,8 +313,10 @@ async function prepare(options) {
         className,
         version,
         description,
-        isNeedPoint,
-        pointSysCode
+        // isNeedPoint,
+        // pointSysCode
+        gitRepo,
+        appName
       },
     };
   }
@@ -329,6 +335,27 @@ function getProjectVersion(defaultVersion, initType) {
     type: 'string',
     message: initType === TYPE_PROJECT ? '请输入项目版本号' : '请输入组件版本号',
     defaultValue: defaultVersion,
+  });
+}
+function getAppName() {
+  return inquirerFunc({
+    type: 'string',
+    message: '请输入appName',
+    defaultValue: '',
+  });
+}
+function getAppName() {
+  return inquirerFunc({
+    type: 'string',
+    message: '请输入appName',
+    defaultValue: '',
+  });
+}
+function getGitRepo() {
+  return inquirerFunc({
+    type: 'string',
+    message: '请输入git仓库地址',
+    defaultValue: '',
   });
 }
 function getProjectBurialPointInfo() {
