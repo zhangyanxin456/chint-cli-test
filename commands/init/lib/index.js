@@ -228,11 +228,15 @@ async function downloadTemplate(project) {
     spinnerStart.stop(true);
     log.success('模板下载成功');
     // 删除.git 目录以断开与模板仓库的关联
-    await fs.remove(`${projectDir}/.git`);
+    await fs.promises.rm(path.join(projectDir, '.git'), { recursive: true, force: true });
     // 更新远程仓库 URL（如果需要）
     if (project.gitRepo) {
       const simpleGitInstance = simpleGit(projectDir);
-      await simpleGitInstance.addRemote('origin', project.gitRepo); // 或者使用 set-url 如果需要替换现有远程
+      await simpleGitInstance.init();
+      await simpleGitInstance.addRemote('origin', project.gitRepo);
+      await simpleGitInstance.add('.');
+      await simpleGitInstance.commit('initial');
+      await simpleGitInstance.push(['-u', 'origin', 'main']);
     }
     // 更新项目信息
     const ejsIgnoreFiles = [
