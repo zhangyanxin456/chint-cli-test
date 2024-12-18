@@ -5,7 +5,6 @@
 ## Usage
 
 安装：
-
 ```bash
 npm install -g @chint-cli-test/core
 ```
