@@ -273,7 +273,7 @@ async function prepare(options) {
       type: 'confirm',
       message: '是否确认清空当下目录下的文件',
       defaultValue: false,
-    });
+    }); 
     if (confirmEmptyDir) {
       fse.emptyDirSync(targetDir);
     }
