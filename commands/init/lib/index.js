@@ -251,13 +251,6 @@ async function downloadTemplate(project) {
   } catch(error) {
     log.error(error)
   }
-  // project: {
-  //   name: projectName,
-  //   className,
-  //   version,
-  //   isNeedPoint,
-  //   pointSysCode
-  // },
 }
 
 async function prepare(options) {
