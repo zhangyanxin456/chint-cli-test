@@ -227,7 +227,7 @@ async function downloadTemplate(project) {
     await simpleGit().clone(templateUrl, projectDir);
     spinnerStart.stop(true);
     log.success('模板下载成功');
-    // 删除.git 目录以断开与模板仓库的关联
+    // 删除.git目录以断开与模板仓库的关联
     await fs.promises.rm(path.join(projectDir, '.git'), { recursive: true, force: true });
     // 更新远程仓库URL（如果需要）
     if (project.gitRepo) {
