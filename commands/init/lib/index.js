@@ -234,6 +234,7 @@ async function downloadTemplate(project) {
       const simpleGitInstance = simpleGit(projectDir);
       await simpleGitInstance.init();
       await simpleGitInstance.addRemote('origin', project.gitRepo);
+      await simpleGitInstance.fetch();
       await simpleGitInstance.add('.');
       await simpleGitInstance.commit('initial');
       await simpleGitInstance.push(['-u', 'origin', 'main']);
