@@ -65,7 +65,7 @@ function registerCommand() {
     log.level = process.env.LOG_LEVEL;
   });
 
-  // 未知命令监听
+  //未知命令监听
   program.on("command:*", function () {
     const availableCommands = program.commands.map((cmd) => cmd.name());
     if (availableCommands.length > 0) {

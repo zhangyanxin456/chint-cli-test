@@ -315,7 +315,6 @@ async function prepare(options) {
         className,
         version,
         description,
-        // pointSysCode
         gitRepo,
         appCode
       },

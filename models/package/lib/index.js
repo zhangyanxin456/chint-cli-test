@@ -72,7 +72,7 @@ class Package {
     }
     return null;
   }
-  // 更新package
+  //更新package
   async update() {
     const latestVersion = await this.getLatestVersion();
     log.info(latestVersion, 7575757)

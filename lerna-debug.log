@@ -1,9 +1,0 @@
-17 error Error: Command failed with exit code 1: git remote update
-17 error fatal: unable to access 'https://github.com/zhangyanxin456/chint-cli-test.git/': Failure when receiving data from the peer
-17 error     at makeError (/Users/zhangyanxin/.nvm/versions/node/v18.15.0/lib/node_modules/lerna/node_modules/execa/lib/error.js:59:11)
-17 error     at module.exports.sync (/Users/zhangyanxin/.nvm/versions/node/v18.15.0/lib/node_modules/lerna/node_modules/execa/index.js:186:17)
-17 error     at Object.execSync (/Users/zhangyanxin/.nvm/versions/node/v18.15.0/lib/node_modules/lerna/dist/index.js:1579:31)
-17 error     at updateRemote (/Users/zhangyanxin/.nvm/versions/node/v18.15.0/lib/node_modules/lerna/dist/index.js:9202:18)
-17 error     at isBehindUpstream (/Users/zhangyanxin/.nvm/versions/node/v18.15.0/lib/node_modules/lerna/dist/index.js:9192:3)
-17 error     at VersionCommand.initialize (/Users/zhangyanxin/.nvm/versions/node/v18.15.0/lib/node_modules/lerna/dist/index.js:9486:57)
-17 error     at VersionCommand.runCommand (/Users/zhangyanxin/.nvm/versions/node/v18.15.0/lib/node_modules/lerna/dist/index.js:3296:36)
