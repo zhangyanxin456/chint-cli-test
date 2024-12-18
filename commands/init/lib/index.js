@@ -296,7 +296,6 @@ async function prepare(options) {
   let gitRepo = await getGitRepo();
   if (initType === TYPE_PROJECT) {
     return {
-      // templateList,
       project: {
         name: projectName,
         className,
