@@ -71,7 +71,7 @@ function registerCommand() {
   //   process.env.CLI_TARGET_PATH = program.targetPath;
   // });
 
-  // 对未知命令监听
+  // 未知命令监听
   program.on("command:*", function () {
     const availableCommands = program.commands.map((cmd) => cmd.name());
     if (availableCommands.length > 0) {
