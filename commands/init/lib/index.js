@@ -283,10 +283,6 @@ async function prepare(options) {
   let className = '';
   while (!projectName) {
     projectName = await getProjectName(initType);
-    // if (projectName) {
-    //   projectName = formatName(projectName);
-    //   // className = formatClassName(projectName);
-    // }
   }
   let version = '1.0.0';
   do {
