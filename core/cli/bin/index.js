@@ -65,12 +65,6 @@ function registerCommand() {
     log.level = process.env.LOG_LEVEL;
   });
 
-  // 指定targetPath
-  // program.on('option:targetPath', function() {
-  //   console.log(program.targetPath)
-  //   process.env.CLI_TARGET_PATH = program.targetPath;
-  // });
-
   // 未知命令监听
   program.on("command:*", function () {
     const availableCommands = program.commands.map((cmd) => cmd.name());
