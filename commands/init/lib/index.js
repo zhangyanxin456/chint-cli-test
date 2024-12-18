@@ -161,6 +161,14 @@ function formatName(name) {
     return name;
   }
 }
+function exec(command, args, options) {
+  const win32 = process.platform === 'win32';
+
+  const cmd = win32 ? 'cmd' : command;
+  const cmdArgs = win32 ? ['/c'].concat(command, args) : args;
+
+  return require('child_process').spawn(cmd, cmdArgs, options || {});
+}
 function execCustomTemplate(rootFile, options) {
   const code = `require('${rootFile}')(${JSON.stringify(options)})`;
   return new Promise((resolve, reject) => {
@@ -176,7 +184,7 @@ function execCustomTemplate(rootFile, options) {
 
 async function npminstall(targetPath) {
   return new Promise((resolve, reject) => {
-    const p = exec('npm', ['install', '--registry=https://registry.npm.taobao.org'], { stdio: 'inherit', cwd: targetPath });
+    const p = exec('npm', ['install', '--registry=https://registry.npmmirror.com'], { stdio: 'inherit', cwd: targetPath });
     p.on('error', e => {
       reject(e);
     });
@@ -219,6 +227,13 @@ async function downloadTemplate(project) {
     await simpleGit().clone(templateUrl, projectDir);
     spinnerStart.stop(true);
     log.success('模板下载成功');
+    // 删除 .git 目录以断开与模板仓库的关联
+    await fs.remove(`${projectDir}/.git`);
+    // 更新远程仓库 URL（如果需要）
+    if (project.gitRepo) {
+      const simpleGitInstance = simpleGit(projectDir);
+      await simpleGitInstance.addRemote('origin', project.gitRepo); // 或者使用 set-url 如果需要替换现有远程
+    }
     // 更新项目信息
     const ejsIgnoreFiles = [
       '**/node_modules/**',
@@ -229,6 +244,10 @@ async function downloadTemplate(project) {
     await ejsFunc(projectDir, project, {
       ignore: ejsIgnoreFiles,
     });
+    // 安装依赖文件
+    log.notice('开始安装依赖');
+    await npminstall(projectDir);
+    log.success('依赖安装成功');
   } catch(error) {
     log.error(error)
   }
@@ -288,12 +307,11 @@ async function prepare(options) {
   //     pointSysCode = await getProjectBurialPointSysCode();
   //   }
   // }
-  let appName = await getAppName();
-  let gitRepo = '';
+  let appCode = '';
   do {
-    gitRepo = await getGitRepo();
-    log.info('version', gitRepo);
-  } while (!gitRepo);
+    appCode = await getappCode();
+  } while (!appCode);
+  let gitRepo = await getGitRepo();
   if (initType === TYPE_PROJECT) {
     return {
       // templateList,
@@ -302,7 +320,7 @@ async function prepare(options) {
         className,
         version,
         gitRepo,
-        appName,
+        appCode,
       },
     };
   } else {
@@ -319,7 +337,7 @@ async function prepare(options) {
         // isNeedPoint,
         // pointSysCode
         gitRepo,
-        appName
+        appCode
       },
     };
   }
@@ -340,17 +358,10 @@ function getProjectVersion(defaultVersion, initType) {
     defaultValue: defaultVersion,
   });
 }
-function getAppName() {
+function getappCode() {
   return inquirerFunc({
     type: 'string',
-    message: '请输入appName',
-    defaultValue: '',
-  });
-}
-function getAppName() {
-  return inquirerFunc({
-    type: 'string',
-    message: '请输入appName',
+    message: '请输入appCode',
     defaultValue: '',
   });
 }
