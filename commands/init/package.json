@@ -1,6 +1,6 @@
 {
   "name": "@chint-cli-test/init",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "init ",
   "author": "zhangyanxin456 <zhangyx26454@yunrong.cn>",
   "homepage": "https://github.com/zhangyanxin456/chint-cli-test/tree/main/commands/init#readme",
