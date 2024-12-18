@@ -289,13 +289,6 @@ async function prepare(options) {
     version = await getProjectVersion(version, initType);
     log.info('version', version);
   } while (!version);
-  // let isNeedPoint = await getProjectBurialPointInfo();
-  // let pointSysCode = '';
-  // if (isNeedPoint === 'Y') {
-  //   while (!pointSysCode) {
-  //     pointSysCode = await getProjectBurialPointSysCode();
-  //   }
-  // }
   let appCode = '';
   do {
     appCode = await getappCode();
