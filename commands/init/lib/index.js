@@ -20,6 +20,11 @@ const templateList = [
     gitPath: 'http://gitlab.chintanneng.com/front_end/vue3-basic-project.git'
   },
   {
+    name: 'vue3-单页面应用',
+    // gitlab 仓库
+    gitPath: 'http://gitlab.chintanneng.com/front_end/vue3-signal-page-application.git'
+  },
+  {
     name: 'react',
     gitPath: 'react'
   }
@@ -234,10 +239,12 @@ async function downloadTemplate(project) {
       const simpleGitInstance = simpleGit(projectDir);
       await simpleGitInstance.init();
       await simpleGitInstance.addRemote('origin', project.gitRepo);
-      await simpleGitInstance.fetch();
-      await simpleGitInstance.add('.');
-      await simpleGitInstance.commit('initial');
-      await simpleGitInstance.push(['-u', 'origin', 'main']);
+      // await simpleGitInstance.fetch();
+      // await simpleGitInstance.checkout(['-b', 'dev']);
+      // await simpleGitInstance.add('.');
+      // await simpleGitInstance.commit('initial');
+      // await simpleGitInstance.pull();
+      // await simpleGitInstance.push(['--set-upstream', 'origin', 'dev']);
     }
     // 更新项目信息
     const ejsIgnoreFiles = [
