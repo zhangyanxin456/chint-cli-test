@@ -20,13 +20,23 @@ const templateList = [
     gitPath: 'http://gitlab.chintanneng.com/front_end/vue3-basic-project.git'
   },
   {
-    name: 'vue3-单页面应用',
+    name: 'vue3-空页面',
     // gitlab 仓库
     gitPath: 'http://gitlab.chintanneng.com/front_end/vue3-signal-page-application.git'
+  }
+]
+const themeTokenList = [
+  {
+    value: 'Anneng',
+    name: '安能'
   },
   {
-    name: 'react',
-    gitPath: 'react'
+    value: 'Guangfuxing',
+    name: '光伏星'
+  },
+  {
+    value: 'XiaoAn',
+    name: '小安'
   }
 ]
 const DEFAULT_TYPE = TYPE_PROJECT;
@@ -189,7 +199,7 @@ function execCustomTemplate(rootFile, options) {
 
 async function npminstall(targetPath) {
   return new Promise((resolve, reject) => {
-    const p = exec('npm', ['install', '--registry=https://registry.npmmirror.com'], { stdio: 'inherit', cwd: targetPath });
+    const p = exec('pnpm', ['install', '--registry=https://npm.chintanneng.com'], { stdio: 'inherit', cwd: targetPath });
     p.on('error', e => {
       reject(e);
     });
@@ -198,7 +208,17 @@ async function npminstall(targetPath) {
     });
   });
 }
-
+async function npmrundev(targetPath) {
+  return new Promise((resolve, reject) => {
+    const p = exec('pnpm', ['run', 'dev'], { stdio: 'inherit', cwd: targetPath });
+    p.on('error', e => {
+      reject(e);
+    });
+    p.on('exit', c => {
+      resolve(c);
+    });
+  });
+}
 // 如果是组件项目，则创建组件相关文件
 async function createComponentFile(template, data, dir) {
   if (template.tag.includes(TYPE_COMPONENT)) {
@@ -216,6 +236,12 @@ async function createComponentFile(template, data, dir) {
 function sleep(timeout) {
   return new Promise((resolve => {
     setTimeout(resolve, timeout);
+  }));
+}
+function createThemeChoice() {
+  return themeTokenList.map(item => ({
+    value: item.value,
+    name: item.name,
   }));
 }
 async function downloadTemplate(project) {
@@ -260,6 +286,7 @@ async function downloadTemplate(project) {
     log.notice('开始安装依赖');
     await npminstall(projectDir);
     log.success('依赖安装成功');
+    await npmrundev(projectDir);
   } catch(error) {
     log.error(error)
   }
@@ -306,6 +333,10 @@ async function prepare(options) {
     appCode = await getappCode();
   } while (!appCode);
   let gitRepo = await getGitRepo();
+  let themeToken = await inquirerFunc({
+    choices: createThemeChoice(),
+    message: '请选择主题',
+  });
   if (initType === TYPE_PROJECT) {
     return {
       project: {
@@ -314,6 +345,7 @@ async function prepare(options) {
         version,
         gitRepo,
         appCode,
+        themeToken
       },
     };
   } else {
@@ -328,7 +360,8 @@ async function prepare(options) {
         version,
         description,
         gitRepo,
-        appCode
+        appCode,
+        themeToken
       },
     };
   }
@@ -352,7 +385,7 @@ function getProjectVersion(defaultVersion, initType) {
 function getappCode() {
   return inquirerFunc({
     type: 'string',
-    message: '请输入appCode',
+    message: '请输入appCode(作为埋点标识)',
     defaultValue: '',
   });
 }
