@@ -4,7 +4,7 @@ export interface CustomConfig {
   useToken?: boolean;
   tokenKey?: string;
   tokenPrefix?: string;
-  getToken?: () => string;
+  getToken?: () => Promise<string> | string;
   errorHandler?: (error: string) => void;
 }
 

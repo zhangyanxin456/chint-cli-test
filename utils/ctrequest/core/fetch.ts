@@ -25,7 +25,7 @@ export function createRequestInstance(axiosInstance: AxiosInstance) {
     try {
       const response = await promise;
       if (response?.data?.code === 0 || response?.data?.code === 800) {
-        return response.data;
+        return response.data?.data;
       }
       
       const error: RequestError = {
